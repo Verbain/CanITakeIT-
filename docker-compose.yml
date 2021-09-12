@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  database :
+      image: "postgres:13-alpine"
+      environment:
+          POSTGRES_USER: "CanITakeIt"
+          POSTGRES_DB: "CanITakeIt"
+          POSTGRES_PASSWORD: "CanITakeIt"
+      volumes:
+          - "CanITakeIt:/var/lib/postgresql/data"
+      ports:
+          - 5432:5432
+
+volumes:
+    CanITakeIt:
