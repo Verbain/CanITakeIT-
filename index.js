@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const cors = require('cors');
 const session = require('express-session');
+const menusController = require('./src/controllers/menusController')
 
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
@@ -34,6 +35,12 @@ app.post('/updateLastnameUser',usersController.updateLastname)
 app.post('/updateRoleUser',usersController.updateRole)
 // POST LOGIN
 app.post('/api/login',urlEncodedParser,usersController.loginUser)
+
+//MENUS ROUTE
+//POST CREATE
+app.post('/menus',menusController.createMenus)
+// POST UPDATE
+app.post('/updateNameMenus',menusController.updateName)
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")
