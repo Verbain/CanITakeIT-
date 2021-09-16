@@ -5,12 +5,7 @@ class menusController{
     async createMenus(req, res){
         try {
             const id = await menusService.createMenus(req.body);
-            res.status(201).json({
-                id:id,
-                status:201,
-                response:"new menu created",
-                data:req.body
-            });
+            res.redirect('/viewMenu')
         } catch (err){
             console.log(err);
         }
@@ -23,6 +18,15 @@ class menusController{
                 status:201,
                 response:"menus Name updated",
                 data:req.body
+            });
+        } catch (err){
+            console.log(err);
+        }
+    }
+    async getMenus(req,res){
+        try {
+            await db.select().table('menus').then(function (ret){
+                res.status(201).json(ret);
             });
         } catch (err){
             console.log(err);

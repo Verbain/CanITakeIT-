@@ -78,13 +78,14 @@ class usersController{
     }
     async loginUser(req,res){
         try {
-            console.log(req.body)
             const log = await usersService.login(req.body);
             if(log != 404)
             {
                 if (log)
                 {
                     req.session.role = log.role
+                    req.session.name = log.name
+                    req.session.lName = log.surname
                     res.redirect('/');
                 } else {
                     res.status(201).json({

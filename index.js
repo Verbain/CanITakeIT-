@@ -23,6 +23,8 @@ app.set('view engine','ejs')
 app.get('/', navigationController.homepage)
 app.get('/login',navigationController.login)
 app.get('/logout',navigationController.logout)
+app.get('/formMenus',navigationController.formMenu)
+app.get('/viewMenu',navigationController.menu)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -38,7 +40,7 @@ app.post('/api/login',urlEncodedParser,usersController.loginUser)
 
 //MENUS ROUTE
 //POST CREATE
-app.post('/menus',menusController.createMenus)
+app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 // POST UPDATE
 app.post('/updateNameMenus',menusController.updateName)
 
