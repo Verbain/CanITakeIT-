@@ -6,6 +6,7 @@ const app = express()
 const cors = require('cors');
 const session = require('express-session');
 const menusController = require('./src/controllers/menusController')
+const dishController = require('./src/controllers/dishController')
 
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
@@ -24,8 +25,10 @@ app.get('/', navigationController.homepage)
 app.get('/login',navigationController.login)
 app.get('/logout',navigationController.logout)
 app.get('/formMenus',navigationController.formMenu)
+app.get('/formDish',navigationController.formDish)
 app.get('/viewMenu',navigationController.menu)
 app.get('/viewUser',navigationController.user)
+app.get('/viewDish',navigationController.dish)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -44,6 +47,11 @@ app.post('/api/login',urlEncodedParser,usersController.loginUser)
 app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 // POST UPDATE
 app.post('/updateNameMenus',menusController.updateName)
+
+//DISH ROUTE
+app.post('/newDish',urlEncodedParser,dishController.createMenus)
+//POST UPDATE
+app.post('/updateNameDish',dishController.updateName)
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")
