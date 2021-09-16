@@ -7,12 +7,16 @@
 </head>
 <body>
     <h1>WELCOME TO CanITakeIt <%= name %></h1>
-    <a href="/login">LOGIN</a>
-    <a href="/logout">LOGOUT</a>
-    <a href="/viewMenu">List Menu</a>
-    <a href="/viewUser">List Users</a>
-    <a href="/viewDish">List Dish</a>
-    <% if (role == 'chef'){ %> <a href="/formMenus">T UN CHEF viens crée un menu</a> <%}%>
-    <% if (role == 'chef'){ %> <a href="/formDish">T UN CHEF viens crée un plat</a> <%}%>
+    <ul>
+      <li><a href="/login">LOGIN</a></li>
+      <li><a href="/logout">LOGOUT</a></li>
+      <li><a href="/viewMenu">List Menu</a></li>
+      <li><a href="/viewUser">List Users</a></li>
+      <li><a href="/viewDish">List Dish</a></li>
+      <li><a href="/viewStock">List Stock</a></li>
+      <% if (role == 'chef'){ %> <li><a href="/formMenus">T UN CHEF viens crée un menu</a></li><%}%>
+      <% if (role == 'chef'){ %> <li><a href="/formDish">T UN CHEF viens crée un plat</a></li> <%}%>
+      <% if (role == 'chef'){ %> <li><a href="/formStock">T UN CHEF viens regarder les stocks</a></li> <%}%>
+    </ul>
 </body>
 </html>
