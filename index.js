@@ -25,6 +25,7 @@ app.get('/login',navigationController.login)
 app.get('/logout',navigationController.logout)
 app.get('/formMenus',navigationController.formMenu)
 app.get('/viewMenu',navigationController.menu)
+app.get('/viewUser',navigationController.user)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)

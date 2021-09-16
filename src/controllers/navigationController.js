@@ -19,7 +19,11 @@ class navigationController{
         db.select().table('menus').then(data =>{
             res.render('menu',{data});
         }).catch(err => res.status(400).json(err));
-        
+    }
+    user(req,res){
+        db.select().table('users').then(data =>{
+            res.render('users',{data});
+        }).catch(err=> res.status(400).json(err));
     }
 }
 
