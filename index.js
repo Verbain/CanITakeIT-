@@ -7,6 +7,7 @@ const cors = require('cors');
 const session = require('express-session');
 const menusController = require('./src/controllers/menusController')
 const dishController = require('./src/controllers/dishController')
+const stockController = require('./src/controllers/stockController')
 
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
@@ -29,6 +30,8 @@ app.get('/formDish',navigationController.formDish)
 app.get('/viewMenu',navigationController.menu)
 app.get('/viewUser',navigationController.user)
 app.get('/viewDish',navigationController.dish)
+app.get('/viewStock',navigationController.stock)
+app.get('/formStock',navigationController.formStock)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -52,6 +55,13 @@ app.post('/updateNameMenus',menusController.updateName)
 app.post('/newDish',urlEncodedParser,dishController.createMenus)
 //POST UPDATE
 app.post('/updateNameDish',dishController.updateName)
+
+//STOCK ROUTE
+app.post('/newStock',urlEncodedParser,stockController.createStock)
+//POST UPDATE
+app.post('/updateNameStock',stockController.updateName)
+app.post('/updateQuantityStock',stockController.updateQuantity)
+app.post('/updateImgStock',stockController.updateImg)
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")

@@ -39,6 +39,14 @@ class navigationController{
             res.render('dish',{data});
         }).catch(err=> console.log(err));
     }
+    formStock(req,res){
+        res.render('formStock')
+    }
+    stock(req,res){
+        db.select().table('stock').then(data =>{
+            res.render('stock',{data})
+        }).catch(err=>console.log(err));
+    }
 }
 
 module.exports = new navigationController();
