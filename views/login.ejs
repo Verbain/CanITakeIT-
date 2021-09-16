@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>HOME</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+    <h1>WELCOME TO canITakeIt</h1>
+    <form action="/api/login" method="POST">
+      <p>WARNING LOG IS CASE SENSITIVE</p>
+        <div class="mb-3">
+            <label for="InputFirstname" class="form-label">Firstname</label>
+            <input type="text" name="Firstname" class="form-control" id="InputFirstname" >
+          </div>
+          <div class="mb-3">
+            <label for="InputLastname" class="form-label">Lastname</label>
+            <input type="text" name="Lastname"class="form-control" id="InputLastname" >
+          </div>
+          <div class="mb-3">
+            <label for="Password" class="form-label">Password</label>
+            <input type="Password" name="Password" class="form-control" id="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

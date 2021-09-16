@@ -5,7 +5,6 @@ class usersDAO{
     async createChef(Firstname,Lastname,Password){
         const salt = 10
         const hash = await bcrypt.hash(Password,salt)
-        console.log(hash)
         const[ret] = await db('users').insert({
             name: Firstname,
             surname: Lastname,
