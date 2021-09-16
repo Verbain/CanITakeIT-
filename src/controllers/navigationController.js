@@ -25,6 +25,20 @@ class navigationController{
             res.render('users',{data});
         }).catch(err=> res.status(400).json(err));
     }
+    formDish(req,res){
+        db.select('menus.id','plats.name','plats.type',
+        'plats.id_menus','menus.name AS menu_name').table('plats')
+        .join('menus',{'menus.id' : 'plats.id_menus'}).then(data =>{
+            res.render('formDish',{data});
+        }).catch(err => res.status(400).json(err));
+    }
+    dish(req,res){
+        db.select('menus.id','plats.name','plats.type',
+        'plats.id_menus','menus.name AS menu_name').table('plats')
+        .join('menus',{'menus.id' : 'plats.id_menus'}).then(data =>{
+            res.render('dish',{data});
+        }).catch(err=> console.log(err));
+    }
 }
 
 module.exports = new navigationController();

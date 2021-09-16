@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>HOME</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+    <h1>WELCOME TO canITakeIt</h1>
+    <form action="/newDish" method="POST">
+        <div class="mb-3">
+            <label for="InputDname" class="form-label">Dish name</label>
+            <input type="text" name="dName" class="form-control" id="InputDname" >
+        </div>
+        <div class="mb-3">
+            <label for="InputDtype" class="form-label">Dish type</label>
+            <input type="text" name="dType" class="form-control" id="InputDtype" >
+        </div>
+        <label for="mId">select Menu</label>
+    <select name="mId" class="form-control" id="mId">
+        <% for(var i = 0; i <data.length; i++){%>
+         <option><%= data[i].menu_name%></option>
+         <%}%>
+    
+    </select>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>
