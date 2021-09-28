@@ -10,9 +10,9 @@ class menusController{
             console.log(err);
         }
     }
-    async updateName(req, res){
+    async updateMenu(req, res){
         try {
-            const id = await menusService.updateName(req.body);
+            const id = await menusService.updateMenu(req.body);
             res.status(201).json({
                 id:id,
                 status:201,

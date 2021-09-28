@@ -26,12 +26,15 @@ app.get('/', navigationController.homepage)
 app.get('/login',navigationController.login)
 app.get('/logout',navigationController.logout)
 app.get('/formMenus',navigationController.formMenu)
+app.get('/formMenus/:ID',navigationController.formMenu)
 app.get('/formDish',navigationController.formDish)
+app.get('/formDish/:ID',navigationController.formDish)
 app.get('/viewMenu',navigationController.menu)
 app.get('/viewUser',navigationController.user)
 app.get('/viewDish',navigationController.dish)
 app.get('/viewStock',navigationController.stock)
 app.get('/formStock',navigationController.formStock)
+app.get('/formStock/:ID',navigationController.formStock)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -49,12 +52,12 @@ app.post('/api/login',urlEncodedParser,usersController.loginUser)
 //POST CREATE
 app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 // POST UPDATE
-app.post('/updateNameMenus',menusController.updateName)
+app.post('/updateMenus',menusController.updateMenu)
 
 //DISH ROUTE
 app.post('/newDish',urlEncodedParser,dishController.createMenus)
 //POST UPDATE
-app.post('/updateNameDish',dishController.updateName)
+app.post('/updateDish',urlEncodedParser,dishController.update)
 
 //STOCK ROUTE
 app.post('/newStock',urlEncodedParser,stockController.createStock)
@@ -62,6 +65,7 @@ app.post('/newStock',urlEncodedParser,stockController.createStock)
 app.post('/updateNameStock',stockController.updateName)
 app.post('/updateQuantityStock',stockController.updateQuantity)
 app.post('/updateImgStock',stockController.updateImg)
+app.post('/updateAllStock',urlEncodedParser,stockController.updateAll)
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")

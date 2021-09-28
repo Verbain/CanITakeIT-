@@ -49,6 +49,14 @@ class stockController{
             console.log(err);
         }
     }
+    async updateAll(req, res){
+        try {
+            const id = await stockService.updateAll(req.body);
+            res.redirect('/viewStock')
+        } catch (err){
+            console.log(err);
+        }
+    }
 
 }
 

@@ -22,6 +22,10 @@ class stockDAO{
         const [ret] = await db('stock').where({id: id}).update({img: sImg}).returning('id');
         return ret;
     }
+    async updateAll(id,sName,sType , sQuantity, sImg){
+        const [ret] = await db('stock').where({id:id}).update({name: sName,type:sType, quantity: sQuantity,img: sImg}).returning('id');
+        return ret;
+    }
 }
 
 module.exports = new stockDAO();

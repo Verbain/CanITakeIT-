@@ -1,3 +1,4 @@
+const { stock } = require("../controllers/navigationController");
 const stockDAO = require("../dao/stockDAO");
 
 class stockService{
@@ -16,6 +17,10 @@ class stockService{
     updateImg(stockDto){
         const{id,sImg}=stockDto;
         return stockDAO.updateName(id,sImg);
+    }
+    updateAll(stockDTO){
+        const{id,sName,sQuantity,sImg} = stockDTO;
+        return stockDAO.updateAll(id,sName,sQuantity,sImg)
     }
 }
 
