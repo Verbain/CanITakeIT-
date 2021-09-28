@@ -6,12 +6,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-    <h1>WELCOME TO canITakeIt</h1>
-    <form action="/newMenus" method="POST">
+  <% if(update == 1){ %><h1>UPDATE MODE</h1><%} else{ %> <h1>ADD MODE</h1> <%}%>
+    <form <% if(update == 1){%> action="/updateMenus" <%} else {%> action="/newMenus"<%}%> method="POST">
         <div class="mb-3">
             <label for="InputMname" class="form-label">Firstname</label>
-            <input type="text" name="mName" class="form-control" id="InputMname" >
-          </div>
+            <input <%if(update==1){%>value="<%=dataU.name%>"<%}%> type="text" name="mName" class="form-control" id="InputMname" >
+        </div>
+        <div class="mb-3">
+          <label for="InputMprice" class="form-label">Price</label>
+          <input <%if(update==1){%>value="<%=dataU.price%>"<%}%> type="text" name="mPrice" class="form-control" id="InputMprice" >
+      </div>
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </body>

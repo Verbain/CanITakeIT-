@@ -86,6 +86,7 @@ class usersController{
                     req.session.role = log.role
                     req.session.name = log.name
                     req.session.lName = log.surname
+                    req.session.ID = log.id
                     res.redirect('/');
                 } else {
                     res.status(201).json({

@@ -3,12 +3,12 @@ const menusDAO = require('../dao/menusDAO');
 
 class menusService{
     createMenus(menusDto){
-        const{mName}=menusDto;
-        return menusDAO.createMenus(mName);
+        const{mName,mPrice}=menusDto;
+        return menusDAO.createMenus(mName,mPrice);
     }
-    updateName(menusDto){
-        const{id,mName}=menusDto;
-        return menusDAO.updateName(id,mName);
+    updateMenu(menusDto){
+        const{id,mName,mPrice}=menusDto;
+        return menusDAO.updateMenu(id,mName,mPrice);
     }
 }
 

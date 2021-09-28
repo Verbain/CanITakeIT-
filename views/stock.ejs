@@ -10,8 +10,9 @@
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
             <li>
-                <a>name: <%= data[i].name %> type: <%= data[i].type %> Quantity : <%= data[i].quantity %></a>
+                <a>name: <%= data[i].name %> type: <%= data[i].type_name %> Quantity : <%= data[i].quantity %></a>
                 <img width="60" height="40" src="<%= data[i].img%>"/>
+                <a href="/updateFormStock/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
             </li>  
         <%}%>
     </ul>
