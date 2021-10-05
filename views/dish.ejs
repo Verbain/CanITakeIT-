@@ -10,6 +10,7 @@
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
             <li><a>Dishname: <%= data[i].name %> Dishtype: <%= data[i].type_name %> LinkedMenu : <%= data[i].menu_name %></a></li>  
+            <a href="/formDish/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
         <%}%>
     </ul>
 </body>

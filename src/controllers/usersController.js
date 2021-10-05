@@ -15,9 +15,9 @@ class usersController{
             console.log(err);
         }
     }
-    async createServeur(req, res){
+    async createClient(req, res){
         try {
-            const id = await usersService.createServeur(req.body);
+            const id = await usersService.createClient(req.body);
             res.status(201).json({
                 id:id,
                 status:201,
@@ -61,6 +61,19 @@ class usersController{
                 id:id,
                 status:201,
                 response:"user role updated",
+                data:req.body
+            });
+        } catch (err){
+            console.log(err);
+        }
+    }
+    async updateUser(req, res){
+        try {
+            const id = await usersService.updateUser(req.body);
+            res.status(201).json({
+                id:id,
+                status:201,
+                response:"user updated",
                 data:req.body
             });
         } catch (err){

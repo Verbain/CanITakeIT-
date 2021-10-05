@@ -9,7 +9,8 @@
     <h1>LISTE DES MENUS</h1>
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
-            <li><a>menu name: <%= data[i].name%> menuPrice: <%=data[i].price%>$</a></li>  
+            <li><a>menu name: <%= data[i].name%> menuPrice: <%=data[i].price%>$</a></li>
+            <a href="/formMenus/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>  
         <%}%>
     </ul>
 </body>
