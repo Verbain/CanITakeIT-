@@ -13,14 +13,14 @@ class usersDAO{
         }).returning('id');
         return ret;
     }
-    async createServeur(Firstname,Lastname,Password){
+    async createClient(Firstname,Lastname,Password){
         const salt = 10
         const hash = await bcrypt.hash(Password,salt)
         const[ret] = await db('users').insert({
             name: Firstname,
             surname: Lastname,
             password:hash,
-            role: 'serveur',
+            role: 'client',
         }).returning('id');
         return ret;
     }
@@ -34,6 +34,12 @@ class usersDAO{
     }
     async updateRole(id, role){
         const [ret] = await db('users').where({id: id}).update({role: role}).returning('id');
+        return ret;
+    }
+    async updateUser(id,Firstname, Lastname, Password, role){
+        const salt = 10
+        const hash = await bcrypt.hash(Password,salt)
+        const [ret] = await db('users').where({id: id}).update({name:Firstname,surname:Lastname,role: role,password:hash}).returning('id');
         return ret;
     }
     async login(Firstname,Lastname,Password){

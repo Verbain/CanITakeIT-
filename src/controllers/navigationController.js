@@ -13,6 +13,23 @@ class navigationController{
         req.session.destroy();
         res.redirect('/')
     }
+    formUser(req,res,ID) {
+        ID = req.params.ID
+        let update = 0;
+        if (!ID){
+            const ROLE = req.params.role
+            console.log(ROLE)
+            console.log("create mode")
+            update = 0;
+            res.render('formUser',{update,ROLE})
+        } else {
+            console.log('update mode')
+            update = 1;
+            db.select().table('users').where({id:ID}).first().then(dataU=>{
+                res.render('formUser',{dataU,update})
+            }).catch(err=>console.log(err));
+        }
+    }
     formMenu(req,res,ID) {
         ID = req.params.ID
         let update = 0;
@@ -63,7 +80,7 @@ class navigationController{
         }
     }
     dish(req,res){
-        db.select('menus.id','plats.name','plats.type',
+        db.select('menus.id','plats.id','plats.name','plats.type',
         'plats.id_menus','menus.name AS menu_name','type_plats.name AS type_name').table('plats')
         .join('menus',{'menus.id' : 'plats.id_menus'})
         .join('type_plats',{'type_plats.id':'plats.type'}).then(data =>{

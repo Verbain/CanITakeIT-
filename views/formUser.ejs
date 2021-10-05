@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>HOME</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+  <% if(update == 1){ %><h1>UPDATE MODE</h1><%} else{ %> <h1>ADD MODE</h1> <%}%>
+    <form <% if(update == 1){%> action="/updateUser" <%} else { if (ROLE == 'client'){%> action="/newClient" <%}else{%>action="/newChef"<%}}%> method="POST">
+        <div class="mb-3">
+            <label for="InputMname" class="form-label">Firstname</label>
+            <input <%if(update==1){%>value="<%=dataU.name%>"<%}%> type="text" name="Firstname" class="form-control" id="InputMname" >
+        </div>
+        <div class="mb-3">
+          <label for="InputMprice" class="form-label">Lastname</label>
+          <input <%if(update==1){%>value="<%=dataU.surname%>"<%}%> type="text" name="Lastname" class="form-control" id="InputMlastname" >
+       </div>
+      <div <%if (update == 1){%> hidden <%}%>class="mb-3">
+        <label for="InputMprice" class="form-label">Password</label>
+        <input <%if(update==1){%>value="<%=dataU.password%>"<%}%> type="Password" name="Password" class="form-control" id="InputMpassword" >
+      </div>
+      <div  hidden class="mb-3">
+        <label for="InputMprice" class="form-label">role</label>
+        <input <%if(update==1){%>value="<%=dataU.role%>"<%}%> type="text" name="role" class="form-control" id="InputMpassword" >
+      </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

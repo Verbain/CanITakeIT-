@@ -5,9 +5,9 @@ class usersService{
         const { Firstname, Lastname, Password } = usersDto;
         return usersDAO.createChef(Firstname,Lastname,Password);
     }
-    createServeur(usersDto){
+    createClient(usersDto){
         const { Firstname, Lastname,Password } = usersDto;
-        return usersDAO.createServeur(Firstname,Lastname,Password);
+        return usersDAO.createClient(Firstname,Lastname,Password);
     }
     updateName(usersDto){
         const {id,Firstname} = usersDto;
@@ -20,6 +20,10 @@ class usersService{
     updateRole(usersDto){
         const {id,role} = usersDto;
         return usersDAO.updateRole(id,role);
+    }
+    updateUser(usersDto){
+        const {id,Firstname, Lastname, Password,role} = usersDto;
+        return usersDAO.updateUser(id,Firstname, Lastname, Password,role);
     }
     login(userDto){
         const {Firstname,Lastname,Password} = userDto;

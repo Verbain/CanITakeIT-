@@ -31,6 +31,8 @@ app.get('/formDish',navigationController.formDish)
 app.get('/formDish/:ID',navigationController.formDish)
 app.get('/viewMenu',navigationController.menu)
 app.get('/viewUser',navigationController.user)
+app.get('/formuser/new/:role',navigationController.formUser)
+app.get('/formUser/:ID',navigationController.formUser)
 app.get('/viewDish',navigationController.dish)
 app.get('/viewStock',navigationController.stock)
 app.get('/formStock',navigationController.formStock)
@@ -39,12 +41,13 @@ app.get('/formStock/:ID',navigationController.formStock)
 //GET
 app.get('/users',usersController.getAllUsers)
 // POST CREATE USERS
-app.post('/newChef',usersController.createChef)
-app.post('/newServeur',usersController.createServeur)
+app.post('/newChef',urlEncodedParser,usersController.createChef)
+app.post('/newClient',urlEncodedParser,usersController.createClient)
 // POST UPDATE USERS
 app.post('/updateNameUser',usersController.updateName)
 app.post('/updateLastnameUser',usersController.updateLastname)
 app.post('/updateRoleUser',usersController.updateRole)
+app.post('/updateUser',urlEncodedParser,usersController.updateUser)
 // POST LOGIN
 app.post('/api/login',urlEncodedParser,usersController.loginUser)
 
