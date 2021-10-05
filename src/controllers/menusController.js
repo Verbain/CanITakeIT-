@@ -23,6 +23,17 @@ class menusController{
             console.log(err);
         }
     }
+    async deleteMenus(req, res,id){
+        id = req.params.ID
+        console.log(id)
+        try {
+            await db('menus').where({id : id}).del().then((ret) =>{
+                res.redirect('/viewMenu')
+            })
+        } catch (err){
+            console.log(err);
+        }
+    }
     async getMenus(req,res){
         try {
             await db.select().table('menus').then(function (ret){

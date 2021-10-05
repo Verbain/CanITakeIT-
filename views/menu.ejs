@@ -9,8 +9,11 @@
     <h1>LISTE DES MENUS</h1>
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
-            <li><a>menu name: <%= data[i].name%> menuPrice: <%=data[i].price%>$</a></li>
-            <a href="/formMenus/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>  
+        <li>
+            <a>menu name: <%= data[i].name%> menuPrice: <%=data[i].price%>$</a>
+            <a href="/formMenus/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
+            <% if (role == 'chef'){ %> <a href="/deleteMenus/<%=data[i].id%>"><i>&#10060;</i></a> <%}%>
+        </li>  
         <%}%>
     </ul>
 </body>

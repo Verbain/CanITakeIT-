@@ -12,6 +12,7 @@
             <li>
                 <a>Firstname: <%= data[i].name %> Lastname: <%= data[i].surname %> Role : <%= data[i].role %></a>
                 <a href="/formUser/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
+                <% if (role == 'chef'){ %> <a href="/deleteUser/<%=data[i].id%>"><i>&#10060;</i></a> <%}%>
             </li>  
         <%}%>
     </ul>
