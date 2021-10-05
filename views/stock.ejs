@@ -10,9 +10,10 @@
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
             <li>
-                <a>name: <%= data[i].name %> type: <%= data[i].type_name %> Quantity : <%= data[i].quantity %></a>
+                <a>name: <%= data[i].name %> type: <%= data[i].type_name %> Quantity : <%= data[i].quantity %> id : <%=data[i].id%></a>
                 <img width="60" height="40" src="<%= data[i].img%>"/>
                 <a href="/formStock/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
+                <% if (role == 'chef'){ %> <a href="/deleteStock/<%=data[i].id%>"><i>&#10060;</i></a> <%}%>
             </li>  
         <%}%>
     </ul>

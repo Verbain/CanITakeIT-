@@ -9,8 +9,11 @@
     <h1>LISTE DES PLATS</h1>
     <ul>
         <% for(var i = 0; i <data.length; i++){%>
-            <li><a>Dishname: <%= data[i].name %> Dishtype: <%= data[i].type_name %> LinkedMenu : <%= data[i].menu_name %></a></li>  
+        <li>
+            <a>Dishname: <%= data[i].name %> Dishtype: <%= data[i].type_name %> LinkedMenu : <%= data[i].menu_name %></a>  
             <a href="/formDish/<%=data[i].id%>"><button class="btn btn-primary">update</button></a>
+            <% if (role == 'chef'){ %> <a href="/deleteDish/<%=data[i].id%>"><i>&#10060;</i></a> <%}%>
+        </li>
         <%}%>
     </ul>
 </body>

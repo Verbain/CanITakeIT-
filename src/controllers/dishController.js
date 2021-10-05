@@ -20,5 +20,16 @@ class dishController{
             console.log(err);
         }
     }
+    async deleteDish(req, res,id){
+        id = req.params.ID
+        console.log(id)
+        try {
+            await db('plats').where({id : id}).del().then((ret) =>{
+                res.redirect('/viewDish')
+            })
+        } catch (err){
+            console.log(err);
+        }
+    }
 }
 module.exports = new dishController()

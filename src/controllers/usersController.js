@@ -80,6 +80,17 @@ class usersController{
             console.log(err);
         }
     }
+    async deleteUser(req, res,id){
+        id = req.params.ID
+        console.log(id)
+        try {
+            await db('users').where({id : id}).del().then((ret) =>{
+                res.redirect('/viewUser');
+            })
+        } catch (err){
+            console.log(err);
+        }
+    }
     async  getAllUsers(req,res){
         try {
             await db.select().table('users').then(function (ret){

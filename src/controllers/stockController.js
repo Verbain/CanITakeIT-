@@ -57,6 +57,17 @@ class stockController{
             console.log(err);
         }
     }
+    async deleteStock(req, res,id){
+        id = req.params.ID
+        console.log(id)
+        try {
+            await db('stock').where({id : id}).del().then((ret) =>{
+                res.redirect('/viewStock')
+            })
+        } catch (err){
+            console.log(err);
+        }
+    }
 
 }
 

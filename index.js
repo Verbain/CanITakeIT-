@@ -48,6 +48,8 @@ app.post('/updateNameUser',usersController.updateName)
 app.post('/updateLastnameUser',usersController.updateLastname)
 app.post('/updateRoleUser',usersController.updateRole)
 app.post('/updateUser',urlEncodedParser,usersController.updateUser)
+// GET DELETE USER
+app.get('/deleteUser/:ID',usersController.deleteUser)
 // POST LOGIN
 app.post('/api/login',urlEncodedParser,usersController.loginUser)
 
@@ -56,11 +58,14 @@ app.post('/api/login',urlEncodedParser,usersController.loginUser)
 app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 // POST UPDATE
 app.post('/updateMenus',menusController.updateMenu)
-
+//GET DELETE
+app.get('/deleteMenus/:ID',menusController.deleteMenus)
 //DISH ROUTE
 app.post('/newDish',urlEncodedParser,dishController.createMenus)
 //POST UPDATE
 app.post('/updateDish',urlEncodedParser,dishController.update)
+//GET DELETE
+app.get('/deleteDish/:ID',dishController.deleteDish)
 
 //STOCK ROUTE
 app.post('/newStock',urlEncodedParser,stockController.createStock)
@@ -69,6 +74,8 @@ app.post('/updateNameStock',stockController.updateName)
 app.post('/updateQuantityStock',stockController.updateQuantity)
 app.post('/updateImgStock',stockController.updateImg)
 app.post('/updateAllStock',urlEncodedParser,stockController.updateAll)
+//GET DELETE
+app.get('/deleteStock/:ID',stockController.deleteStock)
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")

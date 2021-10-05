@@ -46,13 +46,17 @@ class navigationController{
         }
     }
     menu(req,res){
+        const role = req.session.role
+        const name = req.session.name
         db.select().table('menus').then(data =>{
-            res.render('menu',{data});
+            res.render('menu',{data,role});
         }).catch(err => res.status(400).json(err));
     }
     user(req,res){
+        const role = req.session.role
+        const name = req.session.name
         db.select().table('users').then(data =>{
-            res.render('users',{data});
+            res.render('users',{data,role});
         }).catch(err=> res.status(400).json(err));
     }
     formDish(req,res,ID){
@@ -80,11 +84,13 @@ class navigationController{
         }
     }
     dish(req,res){
+        const role = req.session.role
+        const name = req.session.name
         db.select('menus.id','plats.id','plats.name','plats.type',
         'plats.id_menus','menus.name AS menu_name','type_plats.name AS type_name').table('plats')
         .join('menus',{'menus.id' : 'plats.id_menus'})
         .join('type_plats',{'type_plats.id':'plats.type'}).then(data =>{
-            res.render('dish',{data});
+            res.render('dish',{data,role});
         }).catch(err=> console.log(err));
     }
     formStock(req,res,ID){
@@ -106,8 +112,10 @@ class navigationController{
         }
     }
     stock(req,res){
-        db.select('stock.quantity','stock.name','type_stock.name AS type_name','stock.img').table('stock').join('type_stock',{'type_stock.id':'stock.type'}).then(data =>{
-            res.render('stock',{data})
+        const role = req.session.role
+        const name = req.session.name
+        db.select('stock.id','stock.quantity','stock.name','type_stock.name AS type_name','stock.img').table('stock').join('type_stock',{'type_stock.id':'stock.type'}).then(data =>{
+            res.render('stock',{data,role})
         }).catch(err=>console.log(err));
     }
 }
