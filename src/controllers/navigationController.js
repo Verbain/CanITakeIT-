@@ -114,9 +114,17 @@ class navigationController{
     stock(req,res){
         const role = req.session.role
         const name = req.session.name
-        db.select('stock.id','stock.quantity','stock.name','type_stock.name AS type_name','stock.img').table('stock').join('type_stock',{'type_stock.id':'stock.type'}).then(data =>{
+        db.select('stock.id','stock.quantity','stock.name','type_stock.name AS type_name',
+        'stock.img').table('stock').join('type_stock',{'type_stock.id':'stock.type'}).then(data =>{
             res.render('stock',{data,role})
         }).catch(err=>console.log(err));
+    }
+    recipe(req,res){
+        db.select().table('stock').then(dataS =>{
+            db.select().table('plats').then(data=>{
+                res.render('recipe',{data,dataS});
+            }).catch(err=>console.log(err))
+        })  
     }
 }
 

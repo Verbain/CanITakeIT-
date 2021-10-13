@@ -8,6 +8,7 @@ const session = require('express-session');
 const menusController = require('./src/controllers/menusController')
 const dishController = require('./src/controllers/dishController')
 const stockController = require('./src/controllers/stockController')
+const recipeController = require('./src/controllers/recipesController')
 
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
@@ -37,6 +38,7 @@ app.get('/viewDish',navigationController.dish)
 app.get('/viewStock',navigationController.stock)
 app.get('/formStock',navigationController.formStock)
 app.get('/formStock/:ID',navigationController.formStock)
+app.get('/recipe',navigationController.recipe)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -57,7 +59,7 @@ app.post('/api/login',urlEncodedParser,usersController.loginUser)
 //POST CREATE
 app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 // POST UPDATE
-app.post('/updateMenus',menusController.updateMenu)
+app.post('/updateMenus',urlEncodedParser,menusController.updateMenu)
 //GET DELETE
 app.get('/deleteMenus/:ID',menusController.deleteMenus)
 //DISH ROUTE
@@ -76,6 +78,10 @@ app.post('/updateImgStock',stockController.updateImg)
 app.post('/updateAllStock',urlEncodedParser,stockController.updateAll)
 //GET DELETE
 app.get('/deleteStock/:ID',stockController.deleteStock)
+
+//POST CREATE 
+app.post('/newRecipe',urlEncodedParser,recipeController.createRecipe)
+
 
 app.listen(3000,function(){
     console.log("app listening on port 3000")

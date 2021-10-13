@@ -11,6 +11,7 @@ class menusController{
         }
     }
     async updateMenu(req, res){
+        console.log(req.body)
         try {
             const id = await menusService.updateMenu(req.body);
             res.status(201).json({

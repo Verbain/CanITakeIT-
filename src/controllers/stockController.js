@@ -50,6 +50,7 @@ class stockController{
         }
     }
     async updateAll(req, res){
+        console.log(req.body)
         try {
             const id = await stockService.updateAll(req.body);
             res.redirect('/viewStock')
