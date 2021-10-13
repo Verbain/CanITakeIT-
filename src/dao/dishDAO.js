@@ -1,12 +1,13 @@
 const db = require('../../db/db');
 
 class dishDAO{
-    async createDish(dName,dType,mId,uId){
+    async createDish(dName,dType,mId,uId,dDesc){
         const[ret] = await db('plats').insert({
             name: dName,
             type: dType,
             id_menus: mId,
-            id_user: uId
+            id_user: uId,
+            description: dDesc
         }).returning('id');
         return ret;
     }

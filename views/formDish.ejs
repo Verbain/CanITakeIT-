@@ -20,6 +20,10 @@
                  <%}%>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="InputDname" class="form-label">Dish name</label>
+            <input <%if(update==1){%>value="<%=dataU.description%>"<%}%>type="text" name="dDesc" class="form-control" id="InputDdesc" >
+        </div>
         <label for="mId">select Menu</label>
         <select name="mId" class="form-control" id="mId">
             <% for(var i = 0; i <data.length; i++){%>
