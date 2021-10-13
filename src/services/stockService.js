@@ -19,8 +19,8 @@ class stockService{
         return stockDAO.updateName(id,sImg);
     }
     updateAll(stockDTO){
-        const{id,sName,sQuantity,sImg} = stockDTO;
-        return stockDAO.updateAll(id,sName,sQuantity,sImg)
+        const{id,sType,sName,sQuantity,sImg} = stockDTO;
+        return stockDAO.updateAll(id,sName,sType,sQuantity,sImg)
     }
 }
 
