@@ -1,24 +1,16 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>HOME</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-</head>
-<body>
-    <h1>WELCOME TO CanITakeIt <%= name %></h1>
-    <ul>
-      <li><a href="/login">LOGIN</a></li>
-      <li><a href="/logout">LOGOUT</a></li>
-      <li><a href="/viewMenu">List Menu</a></li>
-      <li><a href="/viewUser">List Users</a></li>
-      <li><a href="/viewDish">List Dish</a></li>
-      <li><a href="/viewStock">List Stock</a></li>
-      <li><a href="/formUser/new/client">new user</a></li>
-      <% if (role == 'chef'){ %> <li><a href="/formMenus">T UN CHEF viens crée un menu</a></li><%}%>
-      <% if (role == 'chef'){ %> <li><a href="/formDish">T UN CHEF viens crée un plat</a></li> <%}%>
-      <% if (role == 'chef'){ %> <li><a href="/formStock">T UN CHEF viens gérer les stocks</a></li> <%}%>
-      <% if (role == 'chef'){ %> <li><a href="/formUser/new/chef">T UN CHEF viens gérer les stocks</a></li> <%}%>
-    </ul>
-</body>
-</html>
+
+<%- include('./header.ejs') %>
+<div class="container">
+<% if (role == 'chef') {%>
+    <%- include('./chefHome.ejs') %>
+<%} else {%>
+    <h1> Welcome to CanITakeIT, votre borne de commande en temps réel !</h1>
+    <p>CanITakeIT vous propose de suivre le dérouler de votre commande en temps réel, le prix,
+        la prise en charge de vos plat, tout au long de votre repas vous pouvez commander directement 
+        ce que vous souhaitez, lorsque votre plat est prêt vous serez averti pour aller les cherchers
+        dans les casiers corréspondant à votre table !  
+    </p>
+<%}%>
+</div>
+<%- include('./footer.ejs') %>
+

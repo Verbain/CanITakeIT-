@@ -1,11 +1,26 @@
 const db = require("../../db/db");
 const dishService = require("../services/dishService");
+const recipesService = require("../services/recipesService")
 
 class dishController{
-    async createMenus(req, res){
+    async createDish(req, res){
         try {
             console.log(req.body)
-            const id = await dishService.createDish(req.body);
+            db.select().table('type_plats').where({id : req.body.dType}).first().then(async (data) =>{
+                if(data.name == "boisson"){
+                    db.select().table('stock').where({name: req.body.dName}).first().then(async (dataS) =>{
+                        const id = await dishService.createDish(req.body);
+                        const payload = {
+                            "rPlat":id,
+                            "rIngredient":dataS.id,
+                            "rQuantity":1
+                        }
+                        recipesService.createRecipe(payload)
+                    })
+                } else {
+                    const id = await dishService.createDish(req.body);
+                }
+            })
             res.redirect('/viewDish')
         } catch (err){
             console.log(err);

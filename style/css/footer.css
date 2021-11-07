@@ -1,0 +1,9 @@
+.footer-copyright{
+    height: 30px;
+}
+.footer-copyright .text-muted{
+    font-size: 10px;
+}
+footer{
+    flex-shrink: 0;
+}

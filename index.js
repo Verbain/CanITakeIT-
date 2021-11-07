@@ -9,6 +9,7 @@ const menusController = require('./src/controllers/menusController')
 const dishController = require('./src/controllers/dishController')
 const stockController = require('./src/controllers/stockController')
 const recipeController = require('./src/controllers/recipesController')
+const ordersController = require('./src/controllers/ordersController')
 
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
@@ -21,6 +22,8 @@ app.use(session({
 }))
 //set templating engine
 app.set('view engine','ejs')
+//set css for ejs
+app.use(express.static(__dirname+'/style'))
 
 //ROUNTING
 app.get('/', navigationController.homepage)
@@ -38,7 +41,11 @@ app.get('/viewDish',navigationController.dish)
 app.get('/viewStock',navigationController.stock)
 app.get('/formStock',navigationController.formStock)
 app.get('/formStock/:ID',navigationController.formStock)
+app.get('/formRecipe',navigationController.formRecipe)
 app.get('/recipe',navigationController.recipe)
+app.get('/carte',navigationController.menuAndPlats)
+app.get('/carte/:type',navigationController.menuAndPlats)
+app.get('/orderRecap',navigationController.ordersRecap)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
@@ -62,8 +69,9 @@ app.post('/newMenus',urlEncodedParser,menusController.createMenus)
 app.post('/updateMenus',urlEncodedParser,menusController.updateMenu)
 //GET DELETE
 app.get('/deleteMenus/:ID',menusController.deleteMenus)
+
 //DISH ROUTE
-app.post('/newDish',urlEncodedParser,dishController.createMenus)
+app.post('/newDish',urlEncodedParser,dishController.createDish)
 //POST UPDATE
 app.post('/updateDish',urlEncodedParser,dishController.update)
 //GET DELETE
@@ -81,6 +89,14 @@ app.get('/deleteStock/:ID',stockController.deleteStock)
 
 //POST CREATE 
 app.post('/newRecipe',urlEncodedParser,recipeController.createRecipe)
+
+//ORDERS ROUTE
+//POST CREATE 
+app.post('/newOrder',urlEncodedParser,ordersController.createOrder)
+app.get('/orderContent/:ID',ordersController.orderContent)
+app.get('/promoteStatus/:ID',ordersController.promoteStatus)
+app.get('/deleteOrder/:ID',ordersController.deleteOrder)
+
 
 
 app.listen(3000,function(){

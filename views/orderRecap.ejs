@@ -1,0 +1,13 @@
+<%- include('./header.ejs') %>
+<div class="container">
+    <% for(var i = 0; i <data.length; i++){%>
+        <% for(var y = 0; y <dataP.length; y++){%>
+            <% if(data[i].plats_id == dataP[y].id) {%>
+                <p><%= dataP[y].name %> & status : <%= data[i].status%> & price <%= dataP[y].price %>€ <% if (data[i].status == 'waiting'){ %> <a href="/deleteOrder/<%=data[i].id%>"><i>&#10060;</i></a> <%}%></p>
+                <% total = dataP[y].price + total %>
+            <%}%>
+        <%}%>
+    <%}%>
+    <p>total price : <%= total.toFixed(2) %>€ </p>
+</div>
+<%- include('./footer.ejs') %>

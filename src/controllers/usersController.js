@@ -1,5 +1,6 @@
 const db = require('../../db/db');
 const usersService = require('../services/usersService');
+const ordersSerivce = require('../services/ordersService')
 
 class usersController{
     async createChef(req, res){
@@ -111,6 +112,16 @@ class usersController{
                     req.session.name = log.name
                     req.session.lName = log.surname
                     req.session.ID = log.id
+                    req.session.table = req.body.IDtable
+                    if(log.role == "client"){
+                        const payload = {
+                            "userId":log.id,
+                            "tableId":req.body.IDtable
+                        }
+                        const order = await ordersSerivce.createOrder(payload);
+                        req.session.order = order
+                        console.log("orders created : " + order)
+                    }
                     res.redirect('/');
                 } else {
                     res.status(201).json({

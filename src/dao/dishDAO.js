@@ -1,18 +1,18 @@
 const db = require('../../db/db');
 
 class dishDAO{
-    async createDish(dName,dType,mId,uId,dDesc){
+    async createDish(dName,dType,dPrice,uId,dDesc){
         const[ret] = await db('plats').insert({
             name: dName,
             type: dType,
-            id_menus: mId,
+            price: dPrice,
             id_user: uId,
             description: dDesc
         }).returning('id');
         return ret;
     }
-    async update(id, dName,dType,mId,uId){ 
-        const [ret] = await db('plats').where({id: id}).update({name: dName,type:dType,id_menus:mId,id_user:uId}).returning('id');
+    async update(id, dName,dType,dPrice,uId,dDesc){ 
+        const [ret] = await db('plats').where({id: id}).update({name: dName,type:dType,price:dPrice,id_user:uId,description:dDesc}).returning('id');
         return ret;
     }
 }

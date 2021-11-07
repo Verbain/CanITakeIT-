@@ -1,11 +1,5 @@
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>HOME</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-</head>
-<body>
+<%- include('./header.ejs') %>
+<div class="container">
     <% if(update == 1){ %><h1>UPDATE MODE</h1><%} else{ %> <h1>ADD MODE</h1> <%}%>
     <form <% if(update == 1){%> action="/updateDish" <%} else {%> action="/newDish"<%}%> method="POST">
         <div class="mb-3">
@@ -16,20 +10,18 @@
             <label for="InputDtype" class="form-label">Dish type</label>
             <select name="dType" class="form-control" id="dType">
                 <% for(var i = 0; i <dataT.length; i++){%>
-                 <option value="<%=dataT[i].id%>" <%if(update ==1){%> <%if(dataU.type == data[i].id){%>selected<%}}%>><%= dataT[i].name%></option>
+                 <option value="<%=dataT[i].id%>"><%= dataT[i].name%></option>
                  <%}%>
             </select>
         </div>
         <div class="mb-3">
-            <label for="InputDname" class="form-label">Dish name</label>
+            <label for="InputDname" class="form-label">Dish description</label>
             <input <%if(update==1){%>value="<%=dataU.description%>"<%}%>type="text" name="dDesc" class="form-control" id="InputDdesc" >
         </div>
-        <label for="mId">select Menu</label>
-        <select name="mId" class="form-control" id="mId">
-            <% for(var i = 0; i <data.length; i++){%>
-            <option value="<%=data[i].id%>" <%if(update ==1){%> <%if(dataU.id_menus == data[i].id){%>selected<%}}%>><%= data[i].name%></option>
-            <%}%>
-        </select>
+        <div class="mb-3">
+            <label for="InputDprice" class="form-label">Dish price</label>
+            <input <%if(update==1){%>value="<%=dataU.price%>"<%}%>type="text" name="dPrice" class="form-control" id="InputDprice" >
+        </div>
         <div hidden class="mb-3">
             <label for="InputDUid" class="form-label">chef</label>
             <input value ="<%= chef_id %>" type="text" name="uId" class="form-control" id="InputDUid" >
@@ -42,5 +34,5 @@
         <%}%>
           <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-</body>
-</html>
+</div>
+<%- include('./footer.ejs') %>
