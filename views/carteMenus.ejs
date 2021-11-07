@@ -1,0 +1,96 @@
+<%- include('./header.ejs') %>
+<div class="container">
+    <ul>
+        <% if(!type) {%>
+        <li> starter
+        <% for(var i = 0; i <data.length; i++){%>
+            <% if(data[i].type_name == 'starter'){ %>
+                <ul>
+                    <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                    <a href='/orderContent/<%=data[i].id%>'> commander</a>   
+                </ul>
+            <%}%>
+        <%}%>
+        </li>
+        <li> dessert
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'dessert'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                        <a href='/orderContent/<%=data[i].id%>'> commander</a>   
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+        <li> dish
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'dish'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                        <a href='/orderContent/<%=data[i].id%>'> commander</a>  
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+        <li> boisson
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'boisson'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                    <a href='/orderContent/<%=data[i].id%>'> commander</a>  
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+    <%}%>
+    <% if(type == 'starter') {%>
+        <li> starter
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'starter'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                        <a href='/orderContent/<%=data[i].id%>'> commander</a>   
+                    </ul>
+                <%}%>
+            <%}%>
+            </li>
+    <%}%>
+    <% if(type == 'dish') {%>
+        <li> dish
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'dish'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                        <a href='/orderContent/<%=data[i].id%>'> commander</a>  
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+    <%}%>
+    <% if(type == 'boisson') {%>
+        <li> boisson
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'boisson'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                    <a href='/orderContent/<%=data[i].id%>'> commander</a>  
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+    <%}%>
+    <% if (type =='dessert') {%>
+        <li> dessert
+            <% for(var i = 0; i <data.length; i++){%>
+                <% if(data[i].type_name == 'dessert'){ %>
+                    <ul>
+                        <a>Dishname: <%= data[i].name %> Price : <%= data[i].price %>€ description : <%= data[i].description %></a>
+                        <a href='/orderContent/<%=data[i].id%>'> commander</a>
+                    </ul>
+                <%}%>
+            <%}%>
+        </li>
+    <%}%>
+    </ul>
+</div> 
+<%- include('./footer.ejs') %>

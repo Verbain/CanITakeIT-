@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>HOME</title>
+  <!--BOOTSTRAP-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <!--CSS-->
+  <link href="/css/header.css" rel="stylesheet" type="text/css">
+  <link href="/css/footer.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+      <a class="navbar-brand" href="http://localhost:3000">
+          <img src="https://pbs.twimg.com/profile_images/1097550275353759745/5Xm5apPf_400x400.png" class="rounded-circle" width="50" height="50"/>
+      </a>
+    </div>
+    <div class="mx-auto order-0 fill"></div>
+      <ul class="navbar-nav">
+        <% if(!user_id){%>
+          <li class="nav-item active mx-3">
+            <a class="nav-link" href="/login"><strong>LOGIN</strong></a>
+          </li>
+          <li class="nav-item active mx-3">
+            <a class="nav-link" href="/formUser/new/client"><strong>inscription</strong></a>
+          </li>
+        <%}%>
+        <% if(user_id){%>
+          <li class="nav-item active mx-3">
+            <a class="nav-link" href="/logout"><strong></strong>LOGOUT</strong></a>
+          </li>
+        <%}%>
+        <% if(role == 'client'){%>
+          <li class="nav-item active mx-3"><a class="nav-link" href="/carte/boisson"><strong>boisson</strong></a></li>
+          <li class="nav-item active mx-3"><a class="nav-link" href="/carte/starter"><strong>starter</strong></a></li>
+          <li class="nav-item active mx-3"><a class="nav-link" href="/carte/dish"><strong>dish</strong></a></li>
+          <li class="nav-item active mx-3"><a class="nav-link" href="/carte/dessert"><strong>dessert</strong></a></li>
+          <li class="nav-item active mx-3"><a class="nav-link" href="/orderRecap"><strong>my order</strong></a></li>
+        <%}%>
+        <% if(role == 'chef'){%>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/formDish"><strong></strong>create Dish</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/formStock"><strong></strong>create stock</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/formUser/new/chef"><strong></strong>create chef</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/formRecipe"><strong></strong>create recipe</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/viewUser"><strong></strong>list User</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/viewDish"><strong></strong>list Dish</strong></a></li>
+            <li class="nav-item active mx-3"><a class="nav-link" href="/viewStock"><strong></strong>list stock</strong></a></li>
+        <%}%>
+      </ul>
+    </div>
+    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2"></div>
+  </nav>

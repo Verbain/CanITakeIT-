@@ -1,0 +1,30 @@
+body{
+    background-color: #f7f5f5;
+}
+:root {
+    --mainColor: orange;
+}
+.navbar-nav li {
+    background:
+        linear-gradient(
+            to bottom, var(--mainColor) 0%,
+            var(--mainColor) 100%
+);
+    background-position: 0 100%;
+    background-repeat: repeat-x;
+    background-size: 4px 4px;
+    color: #000;
+    text-decoration: none;
+    transition: background-size .2s;
+}
+
+.navbar-nav li:hover {
+    background-size: 5px 75px;
+}
+
+div.ui-datepicker{
+    font-size:10px;
+}
+.container {
+    height: 100vh;
+  }
