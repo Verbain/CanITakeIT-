@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const cors = require('cors');
 const session = require('express-session');
+require('dotenv').config();
 const menusController = require('./src/controllers/menusController')
 const dishController = require('./src/controllers/dishController')
 const stockController = require('./src/controllers/stockController')
@@ -99,6 +100,6 @@ app.get('/deleteOrder/:ID',ordersController.deleteOrder)
 
 
 
-app.listen(3000,function(){
+app.listen(process.env.PORT,function(){
     console.log("app listening on port 3000")
 })
