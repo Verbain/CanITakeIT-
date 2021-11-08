@@ -47,12 +47,9 @@ class navigationController{
         let update = 0;
         if (!ID){
             const ROLE = req.params.role
-            console.log(ROLE)
-            console.log("create mode")
             update = 0;
             res.render('formUser',{update,ROLE,role,name,user_id})
         } else {
-            console.log('update mode')
             update = 1;
             db.select().table('users').where({id:ID}).first().then(dataU=>{
                 res.render('formUser',{dataU,update,role,name,user_id})
@@ -66,11 +63,9 @@ class navigationController{
         ID = req.params.ID
         let update = 0;
         if (!ID){
-            console.log("create mode")
             update = 0;
             res.render('formMenus',{update,role,name,user_id})
         } else {
-            console.log('update mode')
             update = 1;
             db.select().table('menus').where({id:ID}).first().then(dataU=>{
                 res.render('formMenus',{dataU,update,role,name,user_id})
@@ -102,13 +97,11 @@ class navigationController{
         let update = 0;
         const chef_id = req.session.ID
         if (!ID){
-        console.log("create mode")
         update = 0;
             db.select().table('type_plats').then(dataT=>{
                 res.render('formDish',{chef_id,update,dataT,role,name,user_id});
             }).catch(err => res.status(400).json(err));
         } else {
-            console.log('update mode')
             update = 1;
             db.select().table('plats').where({id:ID}).first().then(dataU =>{
                     db.select().table('type_plats').then(dataT=>{
@@ -134,7 +127,6 @@ class navigationController{
         ID = req.params.ID
         let update = 0;
         if (!ID){
-            console.log("create mode")
             update = 0;
             db.select().table('type_stock').then(data=>{
                 res.render('formStock',{data,update,role,name,user_id})
@@ -199,6 +191,20 @@ class navigationController{
                 res.render('orderRecap',{data,role,name,user_id,dataP,total})
             })
         })
+    }
+
+    contentByType(req,res){
+        const role = req.session.role
+        const name = req.session.name
+        const user_id = req.session.ID
+        const type = req.params.type
+        db.select('plats.id','plats.name','plats.type','plats.description','type_plats.name AS type_name','plats.price').table('plats')
+        .orderBy('plats.type','asc')
+        .join('type_plats',{'type_plats.id':'plats.type'}).then(data =>{
+            db.select().table('order_content').then(dataC =>{
+                res.render('carteMenus',{data,role,name,user_id,type})
+            })
+        }).catch(err => console(err))
     }
 }
 

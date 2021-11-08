@@ -5,7 +5,6 @@ const recipesService = require("../services/recipesService")
 class dishController{
     async createDish(req, res){
         try {
-            console.log(req.body)
             db.select().table('type_plats').where({id : req.body.dType}).first().then(async (data) =>{
                 if(data.name == "boisson"){
                     db.select().table('stock').where({name: req.body.dName}).first().then(async (dataS) =>{
@@ -37,7 +36,6 @@ class dishController{
     }
     async deleteDish(req, res,id){
         id = req.params.ID
-        console.log(id)
         try {
             await db('plats').where({id : id}).del().then((ret) =>{
                 res.redirect('/viewDish')

@@ -23,7 +23,6 @@ class ordersController{
     }
     async promoteStatus(req, res){
         const id = req.params.ID
-        console.log(id)
         db.select().table('order_content').where({id:id}).first().then(async data =>{
             const payload = {
                 "id":id,
@@ -40,7 +39,6 @@ class ordersController{
     }
     async deleteOrder(req, res){
         const id = req.params.ID
-        console.log(id)
         try {
             await db('order_content').where({id : id}).del().then((ret) =>{
                 res.redirect('/orderRecap')

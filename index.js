@@ -1,17 +1,18 @@
 const express = require('express')
-const usersController = require('./src/controllers/usersController')
-const navigationController = require('./src/controllers/navigationController')
+
 const bodyParser = require('body-parser')
 const app = express()
 const cors = require('cors');
 const session = require('express-session');
 require('dotenv').config();
+
 const menusController = require('./src/controllers/menusController')
 const dishController = require('./src/controllers/dishController')
 const stockController = require('./src/controllers/stockController')
 const recipeController = require('./src/controllers/recipesController')
 const ordersController = require('./src/controllers/ordersController')
-
+const usersController = require('./src/controllers/usersController')
+const navigationController = require('./src/controllers/navigationController')
 const urlEncodedParser = bodyParser.urlencoded({extended : false})
 
 app.use(express.json());
@@ -26,7 +27,7 @@ app.set('view engine','ejs')
 //set css for ejs
 app.use(express.static(__dirname+'/style'))
 
-//ROUNTING
+//NAVIGATION ROUNTING
 app.get('/', navigationController.homepage)
 app.get('/login',navigationController.login)
 app.get('/logout',navigationController.logout)
@@ -47,6 +48,7 @@ app.get('/recipe',navigationController.recipe)
 app.get('/carte',navigationController.menuAndPlats)
 app.get('/carte/:type',navigationController.menuAndPlats)
 app.get('/orderRecap',navigationController.ordersRecap)
+app.get('/contentByType/:type',navigationController.contentByType)
 //users route
 //GET
 app.get('/users',usersController.getAllUsers)
