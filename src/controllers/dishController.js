@@ -6,6 +6,7 @@ class dishController{
     async createDish(req, res){
         try {
             db.select().table('type_plats').where({id : req.body.dType}).first().then(async (data) =>{
+                //we look if type is boisson to create the recipe instantly ( for the stock management)
                 if(data.name == "boisson"){
                     db.select().table('stock').where({name: req.body.dName}).first().then(async (dataS) =>{
                         const id = await dishService.createDish(req.body);

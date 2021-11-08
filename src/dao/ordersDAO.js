@@ -17,6 +17,7 @@ class ordersDAO{
         }).returning('id');
         return ret;
     }
+    // PROMOTE STATUS UPDATE DEPENDING OF CURRENT STATUS
     async promoteStatus(id,status){ 
         console.log(status)
         if (status == 'waiting'){
