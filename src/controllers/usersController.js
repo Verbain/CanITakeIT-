@@ -6,12 +6,7 @@ class usersController{
     async createChef(req, res){
         try {
             const id = await usersService.createChef(req.body);
-            res.status(201).json({
-                id:id,
-                status:201,
-                response:"new chef created",
-                data:req.body
-            });
+            res.redirect('/')
         } catch (err){
             console.log(err);
         }
@@ -19,12 +14,7 @@ class usersController{
     async createClient(req, res){
         try {
             const id = await usersService.createClient(req.body);
-            res.status(201).json({
-                id:id,
-                status:201,
-                response:"new serveur created",
-                data:req.body
-            });
+            res.redirect('/')
         } catch (err){
             console.log(err);
         }
@@ -83,7 +73,6 @@ class usersController{
     }
     async deleteUser(req, res,id){
         id = req.params.ID
-        console.log(id)
         try {
             await db('users').where({id : id}).del().then((ret) =>{
                 res.redirect('/viewUser');

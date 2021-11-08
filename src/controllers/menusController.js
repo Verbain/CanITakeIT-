@@ -26,7 +26,6 @@ class menusController{
     }
     async deleteMenus(req, res,id){
         id = req.params.ID
-        console.log(id)
         try {
             await db('menus').where({id : id}).del().then((ret) =>{
                 res.redirect('/viewMenu')

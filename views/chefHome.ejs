@@ -1,14 +1,12 @@
 <div class="container">
-    <h1>WELCOME TO CanITakeIt <%= name %> USER_ID = <%= user_id %></h1>
-    <p>vous êtes a la table <%= table %></p>
-    <p>AFFICHER LA LISTE DES PLATS COMMANDER</p>
+    <h1>WELCOME TO CanITakeIt <%= name %></h1>
     <ul>
         <li> waiting
         <% for(var i = 0; i <data.length; i++){%>
             <% for(var y = 0; y <dataP.length; y++){%>
                 <% if(data[i].status == 'waiting' && data[i].plats_id == dataP[y].id ){ %>
                     <ul>
-                        <a>name: <%= dataP[y].name %> </a>
+                        <a>name: <%= dataP[y].name %> reference: <%= data[i].id %></a>
                         <a href="/promoteStatus/<%=data[i].id%>">PROMOTE</a>
                     </ul>
                 <%}%>  
@@ -20,7 +18,7 @@
                 <% for(var y = 0; y <dataP.length; y++){%>
                     <% if(data[i].status == 'preparation' && data[i].plats_id == dataP[y].id ){ %>
                         <ul>
-                            <a>name: <%= dataP[y].name %> </a>
+                            <a>name: <%= dataP[y].name %> reference: <%= data[i].id %> </a>
                             <a href="/promoteStatus/<%=data[i].id%>">PROMOTE</a>
                         </ul>
                     <%}%>  
@@ -32,8 +30,7 @@
                 <% for(var y = 0; y <dataP.length; y++){%>
                     <% if(data[i].status == 'ready' && data[i].plats_id == dataP[y].id ){ %>
                         <ul>
-                            <a>name: <%= dataP[y].name %> </a>
-                            <a href="/promoteStatus/<%=data[i].id%>">PROMOTE</a>
+                            <a>name: <%= dataP[y].name %>  reference: <%= data[i].id %></a>
                         </ul>
                     <%}%>  
                 <%}%> 

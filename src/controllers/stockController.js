@@ -50,7 +50,6 @@ class stockController{
         }
     }
     async updateAll(req, res){
-        console.log(req.body)
         try {
             const id = await stockService.updateAll(req.body);
             res.redirect('/viewStock')
@@ -60,7 +59,6 @@ class stockController{
     }
     async deleteStock(req, res,id){
         id = req.params.ID
-        console.log(id)
         try {
             await db('stock').where({id : id}).del().then((ret) =>{
                 res.redirect('/viewStock')
