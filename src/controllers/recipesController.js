@@ -2,6 +2,7 @@ const db = require ('../../db/db')
 const recipeService = require('../services/recipesService')
 
 class recipesController{
+    // FOR EACH INGREDIENT OF THE RECIPE WE CREATE A ROW 
     async createRecipe(req, res){
         for (let x=0;x<req.body.rIngredient.length;x++){
             const payload = {

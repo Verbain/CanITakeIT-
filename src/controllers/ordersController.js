@@ -21,6 +21,7 @@ class ordersController{
             console.log(err);
         }
     }
+    //PROMOTE FONCTION FOR STATUS OF ORDER CONTENT (WAITING -> PREPARATION -> Ready)
     async promoteStatus(req, res){
         const id = req.params.ID
         db.select().table('order_content').where({id:id}).first().then(async data =>{
@@ -28,7 +29,6 @@ class ordersController{
                 "id":id,
                 "status":data.status
             }
-            console.log('my payload : ' + payload)
             try {
                 const id = await ordersSerivce.promoteStatus(payload);
                 res.redirect('/')

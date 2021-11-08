@@ -1,5 +1,6 @@
 const db = require('../../db/db');
 const { update } = require('../dao/dishDAO');
+// THIS IS NAVIGATION CONTROLLER FOR THE EJS 
 class navigationController{
     homepage(req,res){
         const role = req.session.role

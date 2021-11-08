@@ -90,6 +90,8 @@ class usersController{
             console.log(err);
         }
     }
+
+    //LOGIN FUNCTION
     async loginUser(req,res){
         try {
             const log = await usersService.login(req.body);
@@ -97,11 +99,13 @@ class usersController{
             {
                 if (log)
                 {
+                    // IF LOG IS TRUE WE ASSIGN DATA TO THE SESSION 
                     req.session.role = log.role
                     req.session.name = log.name
                     req.session.lName = log.surname
                     req.session.ID = log.id
                     req.session.table = req.body.IDtable
+                    // IF WE LOG AS CLIENT WE ALSO CREATE A NEW ORDER 
                     if(log.role == "client"){
                         const payload = {
                             "userId":log.id,

@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 
 class usersDAO{
     async createChef(Firstname,Lastname,Password){
+        // BEFORE INSERT NEW USER IN DB WE HASH THE PASSWORD WITH SOME SALT
         const salt = 10
         const hash = await bcrypt.hash(Password,salt)
         const[ret] = await db('users').insert({
@@ -14,6 +15,7 @@ class usersDAO{
         return ret;
     }
     async createClient(Firstname,Lastname,Password){
+        // BEFORE INSERT NEW USER IN DB WE HASH THE PASSWORD WITH SOME SALT
         const salt = 10
         const hash = await bcrypt.hash(Password,salt)
         const[ret] = await db('users').insert({
@@ -43,8 +45,10 @@ class usersDAO{
         return ret;
     }
     async login(Firstname,Lastname,Password){
+        // WE LOOK IN THE DB IF USER EXIST
         const user = await db('users').first().where({name:Firstname,surname:Lastname});
         if (user){
+            // THEN WE COMPARE USER PASSWORD WITH HASH TO LOG IN
             const correctLog = await bcrypt.compare(Password,user.password)
             if (correctLog){
                 return user;
